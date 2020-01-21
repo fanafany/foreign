@@ -3,50 +3,41 @@ __author__ = 'fanafany'
 __date__ = '2020-01-08 15:12 '
 
 
-# from datetime import datetime
-# from datetime import timedelta
-# datime = '2008-01/01'
-# y = datetime.strptime(datime,"%Y-%m/%d")
-# import datetime
-#
-# aday = timedelta(days=1)
-# ys = y + aday
-# ya = ys.strftime("%Y-%m/%d")
-#
-# while True:
-#     print(ya)
-#     datime = ya
-#     print(datime)
+from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
+from mouse import move,click
+from time import sleep
+#1.创建Chrome浏览器对象，这会在电脑上在打开一个浏览器窗口
+browser = webdriver.Chrome(executable_path ="C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
+browser.maximize_window()
+browser.get('http://www.cdt-ec.com/home/')
+sleep(1)
+title = browser.find_element_by_xpath('//div[@class="content"]/div[2]/ul[2]/button[3]').click()
+sleep(1)
+user = browser.find_element_by_xpath("//div[@class='highly-login-box']/div[2]/input").send_keys('北京合信锐风新能源发展有限公司')
 
-from datetime import datetime
-import time
-
-# 现在的时间
-datime = '2008-01/01'
-now = datetime.strptime(datime,"%Y-%m/%d")
-# 递增的时间
-import datetime
-delta = datetime.timedelta(days=1)
-dy = now + delta
-ya = dy.strftime("%Y-%m/%d")
-
-# 六天后的时间
-# endnow = now + datetime.timedelta(days=50)
-# # 六天后的时间转换成字符串
-# endnow = str(endnow.strftime('%Y-%m-%d'))
-#
-# offset = now
-#
-# # 当日期增加到六天后的日期，循环结束
-# while str(offset.strftime('%Y-%m-%d')) != endnow:
-#     offset += delta
-#     print(str(offset.strftime('%Y-%m-%d')))
-
-while True:
-    datime = ya
-    print(ya)
-    dy = now + delta
+pwd = browser.find_element_by_xpath("//div[@class='highly-login-box']/div[3]/input").send_keys('hxrf6688')
+sleep(1)
+sub = browser.find_element_by_xpath("//div[@class='highly-login-box']/div[4]/input").click()
+sleep(12)
+move(1138,198)
+click()
+sleep(3)
+bids = browser.find_element_by_xpath('//div[@class="navigation"]/ul/a[4]/li').click()
+sleep(2)
+text = browser.find_element_by_xpath("//li/input[@id='message_title']").send_keys('无功补偿')
+inquire = browser.find_element_by_xpath("//div[@class='classs']/ul/li[4]/input").click()
+print(browser.page_source)
 
 
+print('执行成功')
 
+sleep(3)
+
+
+'''
+http://bid.cdt-ec.com/dtdzzb/loginController.do?login&amp;bulletinId=8af894dc6f84b354016fc324d8c6602c&quot;,
+&quot;http://bid.cdt-ec.com/project/2020-01/a4216b5e4a4f4129ba12be10ebb999e7/createBulletinContentFile/7345564643ff46b9a775a033b2c7ad72.swf&quot;,
+&quot;http://bid.cdt-ec.com/dtdzzb/cgUploadController.do?downLoadFileOut&amp;extend=pdf&amp;objId=8af894dd6f84af8f016fc348e9be04fb&quot;)"
+'''
 
