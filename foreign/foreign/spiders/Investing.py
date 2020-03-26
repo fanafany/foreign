@@ -67,3 +67,6 @@ class InvestingSpider(scrapy.Spider):
 
 
 
+'''陈小清
+13337677033
+海南省万宁市东澳镇岛光村委会水桥村'''

@@ -4,7 +4,7 @@ __date__ = '2020-01-13 10:14 '
 
 import tesserocr
 from PIL import Image
-image = Image.open('blog2020.png')
+image = Image.open('do.png')
 image = image.convert('L')
 threshold = 127
 table = []

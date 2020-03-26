@@ -7,27 +7,48 @@ from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from mouse import move,click
 from time import sleep
+import re
 #1.创建Chrome浏览器对象，这会在电脑上在打开一个浏览器窗口
 browser = webdriver.Chrome(executable_path ="C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
 browser.maximize_window()
-browser.get('http://www.cdt-ec.com/home/')
+dates = []
+browser.get('https://pangu.songshuai.com/#/login')
 sleep(1)
-title = browser.find_element_by_xpath('//div[@class="content"]/div[2]/ul[2]/button[3]').click()
+user = browser.find_element_by_xpath("//input[@type='text']").send_keys('13764110015')
 sleep(1)
-user = browser.find_element_by_xpath("//div[@class='highly-login-box']/div[2]/input").send_keys('北京合信锐风新能源发展有限公司')
-
-pwd = browser.find_element_by_xpath("//div[@class='highly-login-box']/div[3]/input").send_keys('hxrf6688')
+pwd = browser.find_element_by_xpath("//input[@type='Password']").send_keys('wlh57362376')
 sleep(1)
-sub = browser.find_element_by_xpath("//div[@class='highly-login-box']/div[4]/input").click()
-sleep(12)
-move(1138,198)
+sub = browser.find_element_by_xpath("//button[@type='button']/span[1]").click()
+sleep(5)
+# ghc = browser.find_element_by_xpath("//span[@title='公海池']").click()
+move(64,444)
 click()
 sleep(3)
-bids = browser.find_element_by_xpath('//div[@class="navigation"]/ul/a[4]/li').click()
+
+
+move(464,379)
+click()
+sleep(3)
+
+login_moble = re.search(r'<!---->1(.*?)</div>',browser.page_source).group(0)
+login_0 = login_moble.replace('<!---->','').replace('</div>','')
+print(login_0)
+# dates.append(moble_1)
+move(459,431)
+click()
 sleep(2)
-text = browser.find_element_by_xpath("//li/input[@id='message_title']").send_keys('无功补偿')
-inquire = browser.find_element_by_xpath("//div[@class='classs']/ul/li[4]/input").click()
+login_moble_1 = re.search(r'<!---->1(.*?)</div>',browser.page_source).group(0)
+login_1 = login_moble_1.replace('<!---->','').replace('</div>','')
+print(login_1)
 print(browser.page_source)
+
+
+
+
+
+
+
+
 
 
 print('执行成功')
